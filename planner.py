@@ -21,18 +21,28 @@ while start:
         if askUser.lower() == "yes":
             userTask.append(questionList())
         else:
-            print("\nHere is your To Do list!")
             continueAsk = False
-                
-    prioritized = sorted(userTask, key = lambda i: i["priority"], reverse = True)
+    
+    organize = input("How would you like to sort your To-Do list? By time, task, or priority?\n")
+    if (organize.lower() == "time"):
+        prioritized = sorted(userTask, key = lambda i: i["length"], reverse = True)
+    elif (organize.lower() == "task"):
+        prioritized = sorted(userTask, key = lambda i: i["task"])
+    elif(organize.lower() == "priority"):
+        prioritized = sorted(userTask, key = lambda i: i["priority"], reverse = True)
+    else:
+        print("Sorry try again next time.")
+    
     
     
     count = 0
     totalLength = 0
+    print("\nHere is your To Do list!")
     for duty in prioritized:  
+        
         print(str(count+1) + ". " + duty["task"].title()  + " for " + str(duty["length"]) + " minutes.")
         totalLength += int(duty["length"])
         count += 1
-    print("It will take you " + str(totalLength) + " minutes to complete your To Do list!")
+    print("\nIt will take you " + str(totalLength) + " minutes to complete your To Do list!")
     start = False
     
