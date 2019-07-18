@@ -21,15 +21,18 @@ while start:
         if askUser.lower() == "yes":
             userTask.append(questionList())
         else:
-            print("Here is your task list!")
+            print("\nHere is your To Do list!")
             continueAsk = False
                 
     prioritized = sorted(userTask, key = lambda i: i["priority"], reverse = True)
     
+    
     count = 0
+    totalLength = 0
     for duty in prioritized:  
-        i = 0
         print(str(count+1) + ". " + duty["task"].title()  + " for " + str(duty["length"]) + " minutes.")
+        totalLength += int(duty["length"])
         count += 1
+    print("It will take you " + str(totalLength) + " minutes to complete your To Do list!")
     start = False
     
