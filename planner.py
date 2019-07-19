@@ -25,7 +25,7 @@ while start:
     
     organize = input("How would you like to sort your To-Do list? By time, task, or priority?\n")
     if (organize.lower() == "time"):
-        prioritized = sorted(userTask, key = lambda i: i["length"], reverse = True)
+         prioritized = sorted(userTask, key = lambda i: i["length"])
     elif (organize.lower() == "task"):
         prioritized = sorted(userTask, key = lambda i: i["task"])
     elif(organize.lower() == "priority"):
